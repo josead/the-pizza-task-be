@@ -30,8 +30,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
     }
 
@@ -44,9 +42,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
-
-        //
+        // Resources like images
+        $this->mapResourcesRoutes();
     }
 
     /**
@@ -56,11 +53,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapResourcesRoutes()
     {
-        Route::middleware('web')
+        Route::prefix('resources')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+            ->group(base_path('routes/resources.php'));
     }
 
     /**
@@ -73,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            // ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
     }
