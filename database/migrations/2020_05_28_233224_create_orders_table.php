@@ -13,11 +13,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->array();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('orders')) {
+            Schema::create('orders', function (Blueprint $table) {
+                $table->increments('id');
+                $table->uuid('ticket_number');
+                $table->json('items_detail');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

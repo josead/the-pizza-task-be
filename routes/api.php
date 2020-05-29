@@ -16,4 +16,7 @@ use App\Http\Controllers\MenuController;
 |
 */
 
+Route::get('delivery-fee', 'MenuController@fee');
 Route::get('menu', 'MenuController@index');
+Route::post('order', 'OrderController@create');
+Route::get('order/{ticketNumber}', 'OrderController@getByTicket');

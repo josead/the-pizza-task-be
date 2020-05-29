@@ -7,8 +7,7 @@ use App\Pizza;
 
 class MenuController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $pizzas = Pizza::all();
 
         // Transforming prices
@@ -21,5 +20,11 @@ class MenuController extends Controller
         }
 
         return $pizzas;
+    }
+
+    public function fee() {
+        $fee = [ 'value' => 5, 'currency' => 'EUR' ];
+
+        return $fee;
     }
 }
